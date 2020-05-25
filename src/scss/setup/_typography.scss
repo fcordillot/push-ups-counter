@@ -1,0 +1,175 @@
+// ####################################################
+// Load fonts
+//
+// Use below @font-face declaration template to load fonts
+// Copy/paste for each font to be loaded
+
+
+// ####################################################
+// Site font stack variables
+//
+// uncomment and complete stack with project fonts
+// xxxxx--loaded variables need a font loader to be activated (see setup/mixins/typography for CSS rule) :
+// https://code.area17.com/mike/a17-js-helpers/wikis/A17-Helpers-fontObservers
+
+// the fall back font family string. eg. Helvetica, Arial, sans-serif.
+$serif-font: serif;
+$sans-serif-font: Arial, sans-serif;
+// the font family string when the primary font is loaded (your primary font plus the fall back string)
+$serif-font--loaded: Georgia, #{$serif-font};
+$sans-serif-font--loaded: Arial, #{$sans-serif-font};
+// the appended class names when the fonts have loaded
+$serif-font-loaded-class: 'js-serif-font-loaded';
+$sans-serif-font-loaded-class: 'js-sans-serif-font-loaded';
+// cap heights of the fonts - measure height of a capital H at 100px and then divide by 100
+$cap-heights: (
+  serif: .66,
+  sans-serif: .568,
+  arial: .72,
+  helvetica: .72,
+  'Times New Roman': .67,
+  'Grtsk': .72
+);
+
+// ####################################################
+// Site fonts objects, mixins, placeholders and classes
+//
+// Sample block below. Copy, paste and edit for each type
+// style you need.
+// `xsmall` is basically the default
+// Attributes in the settings are additive, that is, if
+// you set something, font-weight, in xsmall, it value
+// will be carried through all breakpoints, unless you
+// supply a new font-weight in a later breakpoint (in
+// which case that new value becomes the value for all
+// later breakpoints).
+//
+// You always need to set a `xsmall`.
+//
+// See
+// * https://codepen.io/13twelve/pen/WYgrYE?editors=1000
+// * https://code.area17.com/a17/fe-boilerplate/wikis/scss-setup-typography
+// * https://code.area17.com/a17/fe-boilerplate/wikis/scss-setup-mixins-typography
+
+/***
+
+f-XX
+
+```
+<p class="f-XX">The quick brown fox, <br>jumps over the lazy dog</p>
+```
+
+***/
+/*
+$f-XX: generate-font-obj(
+  (
+    font-family: $serif-font,
+    font-family-loaded: $serif-font--loaded,
+    font-loaded-class: $serif-font-loaded-class,
+    settings: (
+      'xsmall': (font-size: 30, line-height: 30, letter-spacing: -0.015em, font-weight: 300, push: 0),
+      'medium+': (font-size: 48, line-height: 55, push: 0),
+      'xlarge+': (font-size: 60, line-height: 65, push: 0),
+      'xxlarge': (font-size: 72, line-height: 75, push: 0)
+    )
+  )
+);
+
+@mixin f-XX() {
+  @include font-styles($f-XX);
+  font-variant-ligatures: common-ligatures;
+  font-variant-numeric: oldstyle-nums;
+  font-kerning: normal;
+}
+
+%f-XX,
+.f-XX {
+  @include f-XX;
+}
+*/
+
+@font-face {
+  font-family: 'Grtsk';
+  src: url('~@/assets/fonts/Grtsk.eot?#iefix') format('embedded-opentype'),  url('~@/assets/fonts/Grtsk.woff') format('woff'), url('~@/assets/fonts/Grtsk.ttf')  format('truetype'), url('~@/assets/fonts/Grtsk.svg#Grtsk') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Fonts by usages
+$fontFamilies: (
+  'grtsk': #{"'Grtsk', #{$sans-serif-font}"}
+);
+
+@each $key,$val in $gradients-list {
+  .u-bg-gradient--#{$key} {
+    background-image: #{$val};
+  }
+}
+
+@each $key,$val in $fonts {
+  $fontFamily: map-get($val, "font-family");
+  $fontSizes: map-get($val, "font-size");
+  $fontSizeBase: map-get($fontSizes, "base");
+  $fontSizeMin: map-get($fontSizes, "min");
+  $fontSizeMax: map-get($fontSizes, "max");
+
+  $fontLetterSpacing: map-get($val, "letter-spacing");
+
+  $fontLineHeight: map-get($val, "line-height");
+
+  .f-#{$key} {
+    $min-font-size: $fontSizeMin;
+    $max-font-size: $fontSizeMax;
+    $mobile-screen-size: map-get(map-get($breakpoints, "xsmall"), "end");
+    $desktop-design-screen-size: map-get(map-get($breakpoints, "xlarge"), "start");
+
+    // calc( (min-font-size)px + (max-font-size - min-font-size) * (100vw - (mobile-screen-size)px) / (desktop-design-screen-size - mobile-screen-size) );
+    font-size: calc(#{$min-font-size + px} + (#{$max-font-size} - #{$min-font-size}) * (100vw - #{$mobile-screen-size + px}) / (#{$desktop-design-screen-size} - #{$mobile-screen-size}));
+
+    $keys: map-keys($val);
+    @each $_key,$_val in $keys {
+      @if $_key != 'font-size' {
+        @if $_key == 'font-family' {
+          #{$_key}: map-get($fontFamilies, map-get($val, $_key));
+        } @else {
+          #{$_key}: map-get($val, $_key);
+        }
+      }
+    }
+    // font-family: map-get($fontFamilies, $fontFamily);
+    // line-height: $fontLineHeight;
+    // letter-spacing: $fontLetterSpacing;
+
+    @media screen and (min-width: ($desktop-design-screen-size + px)) {
+      font-size: ($max-font-size + px);
+    }
+
+    @media screen and (max-width: ($mobile-screen-size + px)) {
+      font-size: ($min-font-size + px);
+    }
+  }
+
+  .f-fsize-#{$key} {
+    $min-font-size: $fontSizeMin;
+    $max-font-size: $fontSizeMax;
+    $mobile-screen-size: map-get(map-get($breakpoints, "xsmall"), "end");
+    $desktop-design-screen-size: map-get(map-get($breakpoints, "xlarge"), "start");
+
+    // calc( (min-font-size)px + (max-font-size - min-font-size) * (100vw - (mobile-screen-size)px) / (desktop-design-screen-size - mobile-screen-size) );
+    font-size: calc(#{$min-font-size + px} + (#{$max-font-size} - #{$min-font-size}) * (100vw - #{$mobile-screen-size + px}) / (#{$desktop-design-screen-size} - #{$mobile-screen-size}));
+
+    @media screen and (min-width: ($desktop-design-screen-size + px)) {
+      font-size: ($max-font-size + px);
+    }
+
+    @media screen and (max-width: ($mobile-screen-size + px)) {
+      font-size: ($min-font-size + px);
+    }
+  }
+}
+
+@each $key,$val in $fonts-weights {
+  .f-fweight-#{$key} {
+    font-weight: $val;
+  }
+}

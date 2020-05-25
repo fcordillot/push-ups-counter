@@ -1,0 +1,33 @@
+.o-content {
+  blockquote,
+  p {
+    margin-top: $base-px * 4;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  strong {
+    @extend .f-fweight-bold;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  a {
+    @extend .f-fweight-bold;
+    color: map-get($colors-list, "brand-green") !important;
+
+    &:hover {
+      text-decoration: underline !important;
+    }
+  }
+
+  blockquote {
+    padding-left: $base-px * 2;
+
+    border-left: 1px solid map-get($colors-list, "brand-white");
+  }
+}

@@ -1,0 +1,66 @@
+.app,
+#app {
+  width: 100vw;
+  min-height: 100vh;
+  background: map-get($colors-list, 'white');
+  color: map-get($colors-list, 'black');
+
+  img {
+    border: 0 none;
+  }
+
+  .js-hide {
+    display: none;
+  }
+
+  .js-show {
+    display: block;
+  }
+
+  h1, h2, h3, h4, h5, h6, p, a {
+    font-style: normal!important;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  // Text-transform
+  .f-uppercase {
+    text-transform: uppercase;
+  }
+
+  // Font-weight
+  $font-weights: (
+    'thin': 100,
+    'hairline': 100,
+    'extra-light': 200,
+    'ultra-light': 200,
+    'light': 300,
+    'regular': 400,
+    'normal': 400,
+    'medium': 500,
+    'demi-bold': 500,
+    'semi-bold': 500,
+    'bold': 700,
+    'extra-bold': 800,
+    'ultra-bold': 800,
+    'black': 900,
+    'heavy': 900
+  );
+  @each $key,$val in $font-weights {
+    .f-#{$key} {
+      font-weight: #{$val};
+    }
+  }
+}
+
+.app-no-scroll {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.app-hidden {
+  display: none;
+}

@@ -1,0 +1,15 @@
+@each $key,$val in $gradients-list {
+  .u-bg-gradient--#{$key} {
+    background-image: #{$val};
+  }
+}
+
+@each $key,$val in $colors-list {
+  .u-bg-color--#{$key} {
+    background-color: #{$val};
+  }
+
+  .f-color-#{$key} {
+    color: #{$val};
+  }
+}

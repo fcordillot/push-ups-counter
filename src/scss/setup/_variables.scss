@@ -1,0 +1,253 @@
+// Baseline grid height
+$base-height: 5;
+
+// Max widths the main column can run to over the breakpoints
+// values can either be 'fluid' or a pixel value
+// recommended xxlarge is a px value and xsmall is fluid
+$max-width: 1440px;
+
+$main-col-widths: (
+  xlarge: 1440px,
+  large: 'fluid',
+  medium: 'fluid',
+  small: 'fluid',
+  xsmall: 'fluid'
+);
+
+// Inner gutters, in px or vw, of each breakpoint
+$inner-gutters: (
+  xlarge: 40px,
+  large: 40px,
+  medium: 30px,
+  small: 10px,
+  xsmall: 10px
+);
+
+// Outer gutters, in px or vw, of each breakpoint
+$outer-gutters: (
+  xlarge: 60px,
+  large: 60px,
+  medium: 40px,
+  small: 20px,
+  xsmall: 20px
+);
+
+// How many columns are in each breakpoint
+$column-count: (
+  xlarge: 12,
+  large: 12,
+  medium: 12,
+  small: 6,
+  xsmall: 6
+);
+
+// Breakpoint information, where each starts and stops
+// if a breakpoint is not fluid, then the start value is equal to the main col value plus 2x the gutter at this breakpoint
+$breakpoints: (
+  xsmall: (start: null, end: 449),
+  small: (start: 450, end: 749),
+  medium: (start: 750, end: 969),
+  large: (start: 970, end: 1439),
+  xlarge: (start: 1440, end: null)
+);
+
+$fonts-weights: (
+  thin:        100,
+  hairline:    100,
+  ultra-light: 100,
+  extra-light: 100,
+  light:       200,
+  book:        300,
+  regular:     400,
+  normal:      400,
+  plain:       400,
+  roman:       400,
+  standard:    400,
+  medium:      500,
+  semi-bold:   600,
+  demi-bold:   600,
+  bold:        700,
+  heavy:       800,
+  black:       800,
+  extra-bold:  800,
+  ultra-black: 900,
+  extra-black: 900,
+  ultra-bold:  900,
+  heavy-black: 900,
+  fat:         900,
+  poster:      900
+);
+
+// Different font definition
+$fonts: (
+  count-1: (
+    font-family: 'grtsk',
+    font-size: (
+      base: 150,
+      min: 150,
+      max: 150
+    ),
+    letter-spacing: 0em,
+    line-height: 1,
+    text-transform: uppercase,
+    font-feature-settings: unquote("\"kern\" on, \"liga\" on, \"rlig\" on, \"calt\" on"),
+    font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 500")
+  ),
+  count-2: (
+    font-family: 'grtsk',
+    font-size: (
+      base: 150,
+      min: 150,
+      max: 150
+    ),
+    letter-spacing: 0em,
+    line-height: 1,
+    text-transform: uppercase,
+    font-feature-settings: unquote("\"kern\" on, \"liga\" on, \"rlig\" on, \"calt\" on"),
+    font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 500")
+  ),
+  count-3: (
+    font-family: 'grtsk',
+    font-size: (
+      base: 110,
+      min: 110,
+      max: 110
+    ),
+    letter-spacing: 0em,
+    line-height: 1,
+    text-transform: uppercase,
+    font-feature-settings: unquote("\"kern\" on, \"liga\" on, \"rlig\" on, \"calt\" on"),
+    font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 500")
+  ),
+  count-4: (
+    font-family: 'grtsk',
+    font-size: (
+      base: 100,
+      min: 100,
+      max: 100
+    ),
+    letter-spacing: 0em,
+    line-height: 1,
+    text-transform: uppercase,
+    font-feature-settings: unquote("\"kern\" on, \"liga\" on, \"rlig\" on, \"calt\" on"),
+    font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 500")
+  ),
+  count-5: (
+    font-family: 'grtsk',
+    font-size: (
+      base: 80,
+      min: 80,
+      max: 80
+    ),
+    letter-spacing: 0em,
+    line-height: 1,
+    text-transform: uppercase,
+    font-feature-settings: unquote("\"kern\" on, \"liga\" on, \"rlig\" on, \"calt\" on"),
+    font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 500")
+  ),
+  reset: (
+    font-family: 'grtsk',
+    font-size: (
+      base: 14,
+      min: 14,
+      max: 14
+    ),
+    letter-spacing: 0.1em,
+    line-height: 1,
+    font-feature-settings: unquote("\"kern\" on, \"liga\" on, \"rlig\" on, \"calt\" on"),
+    font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 400")
+  ),
+  back: (
+    font-family: 'grtsk',
+    font-size: (
+      base: 14,
+      min: 14,
+      max: 14
+    ),
+    letter-spacing: 0.1em,
+    line-height: 1,
+    text-transform: uppercase,
+    font-feature-settings: unquote("\"kern\" on, \"liga\" on, \"rlig\" on, \"calt\" on"),
+    font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 500")
+  ),
+  history-title: (
+    font-family: 'grtsk',
+    font-size: (
+      base: 20,
+      min: 20,
+      max: 20
+    ),
+    letter-spacing: 0.1em,
+    line-height: 1,
+    text-transform: uppercase,
+    font-feature-settings: unquote("\"kern\" on, \"liga\" on, \"rlig\" on, \"calt\" on"),
+    font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 700")
+  ),
+  history-value: (
+    font-family: 'grtsk',
+    font-size: (
+      base: 20,
+      min: 20,
+      max: 20
+    ),
+    letter-spacing: 0.1em,
+    line-height: 1,
+    text-transform: uppercase,
+    font-feature-settings: unquote("\"kern\" on, \"liga\" on, \"rlig\" on, \"calt\" on"),
+    font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 700")
+  ),
+  history-date: (
+    font-family: 'grtsk',
+    font-size: (
+      base: 14,
+      min: 14,
+      max: 14
+    ),
+    letter-spacing: 0em,
+    line-height: 1,
+    text-transform: uppercase,
+    font-feature-settings: unquote("\"kern\" on, \"liga\" on, \"rlig\" on, \"calt\" on"),
+    font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 300")
+  )
+);
+
+$base-px: 8px;
+
+// Uniform border radius
+$border-radius: 2px;
+
+// Some easing functions
+$bezier--bounce: cubic-bezier(.5, -.6, .5, 1.6);
+$bezier--ease-in-out: cubic-bezier(.5, 0, .5, 0);
+$bezier--ease-out: cubic-bezier(0.6, 1.02, 1.0, 0.93);
+$bezier--ease--cubic-in-out: cubic-bezier(.6, 0, .4, 1.0);
+$bezier--ease--quint-in-out: cubic-bezier(0.780, 0.010, 0.000, 1.000);
+$bezier--ease--quint-out: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+
+$linear: cubic-bezier(0.250, 0.250, 0.750, 0.750);
+$ease-in-quad: cubic-bezier(0.550, 0.085, 0.680, 0.530);
+$ease-in-cubic: cubic-bezier(0.550, 0.055, 0.675, 0.190);
+$ease-in-quart: cubic-bezier(0.895, 0.030, 0.685, 0.220);
+$ease-in-quint: cubic-bezier(0.755, 0.050, 0.855, 0.060);
+$ease-in-sine: cubic-bezier(0.470, 0.000, 0.745, 0.715);
+$ease-in-expo: cubic-bezier(0.950, 0.050, 0.795, 0.035);
+$ease-in-circ: cubic-bezier(0.600, 0.040, 0.980, 0.335);
+$ease-in-back: cubic-bezier(0.600, -0.280, 0.735, 0.045);
+
+$ease-out-quad: cubic-bezier(0.250, 0.460, 0.450, 0.940);
+$ease-out-cubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+$ease-out-quart: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+$ease-out-quint: cubic-bezier(0.230, 1.000, 0.320, 1.000);
+$ease-out-sine: cubic-bezier(0.390, 0.575, 0.565, 1.000);
+$ease-out-expo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+$ease-out-circ: cubic-bezier(0.075, 0.820, 0.165, 1.000);
+$ease-out-back: cubic-bezier(0.175, 0.885, 0.320, 1.100);
+
+$ease-in-out-quad: cubic-bezier(0.455, 0.030, 0.515, 0.955);
+$ease-in-out-cubic: cubic-bezier(0.645, 0.045, 0.355, 1.000);
+$ease-in-out-quart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+$ease-in-out-quint: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+$ease-in-out-sine: cubic-bezier(0.445, 0.050, 0.550, 0.950);
+$ease-in-out-expo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+$ease-in-out-circ: cubic-bezier(0.785, 0.135, 0.150, 0.860);
+$ease-in-out-back: cubic-bezier(0.680, 0, 0.265, 1);
