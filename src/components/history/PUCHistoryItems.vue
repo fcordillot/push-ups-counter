@@ -2,25 +2,11 @@
   <section class="puc-history-items"
            :class="elClasses"
            :style="elStyle">
-    <div class="u-marg-t-2">
-      <div class="f-history-title"
-           v-html="'BEST:'">
-      </div>
-
-      <puc-history-items-item :item="best">
-      </puc-history-items-item>
-    </div>
-
-    <div class="u-marg-t-4">
-      <div class="f-history-title"
-           v-html="'LIST:'">
-      </div>
-
-      <puc-history-items-item v-for="(Item, ItemIndex) in historic"
-                              :key="`puc-history-items_item-${ItemIndex}`"
-                              :item="Item">
-      </puc-history-items-item>
-    </div>
+    <puc-history-items-item v-for="(Item, ItemIndex) in historic"
+                            :key="`puc-history-items_item-${ItemIndex}`"
+                            :item="Item"
+                            :best-uid="best.uid">
+    </puc-history-items-item>
   </section>
 </template>
 

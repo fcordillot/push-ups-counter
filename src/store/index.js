@@ -106,6 +106,10 @@ export const mutations = {
     state[STATE.globalData] = globalData
   },
   //
+  [MUTATIONS.clearHistory] (state) {
+    Cookie.set(CookieNames.HISTORIC, JSON.stringify([]))
+    state[STATE.historic] = []
+  },
   [MUTATIONS.addValueToHistoric] (state, value) {
     const historic = state[STATE.historic]
 

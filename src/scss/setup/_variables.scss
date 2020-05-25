@@ -199,15 +199,26 @@ $fonts: (
   history-date: (
     font-family: 'grtsk',
     font-size: (
-      base: 14,
-      min: 14,
-      max: 14
+      base: 10,
+      min: 10,
+      max: 10
     ),
     letter-spacing: 0em,
     line-height: 1,
-    text-transform: uppercase,
     font-feature-settings: unquote("\"kern\" on, \"liga\" on, \"rlig\" on, \"calt\" on"),
-    font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 300")
+    font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 400")
+  ),
+  history-clear: (
+    font-family: 'grtsk',
+    font-size: (
+      base: 10,
+      min: 10,
+      max: 10
+    ),
+    letter-spacing: 0em,
+    line-height: 1,
+    font-feature-settings: unquote("\"kern\" on, \"liga\" on, \"rlig\" on, \"calt\" on"),
+    font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 400")
   )
 );
 

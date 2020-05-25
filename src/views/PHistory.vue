@@ -1,5 +1,5 @@
 <template>
-  <div class="phistory u-pad-b-2 f-color-white"
+  <div class="phistory u-pad-b-4 f-color-black-near"
        :class="elClasses">
     <div class="phistory__header">
       <router-link :to="{ name: 'home' }">
@@ -16,12 +16,20 @@
     </div>
 
     <puc-history-items></puc-history-items>
+
+    <div class="u-marg-t-6 u-pad-y-2 f-history-clear f-color-delete u-align-center"
+         v-html="'Clear my history'"
+         @click="clearHistory">
+    </div>
   </div>
 </template>
 
 <script>
   // Mixins
   import PageMixin from '@/mixins/page'
+
+  // Store
+  import { MUTATIONS as M } from '@/store/helpers'
 
   // Helpers
   import { EventBus } from '@/helpers/event-bus'
@@ -70,6 +78,11 @@
         let vh = window.innerHeight * 0.01
         // Then we set the value in the --vh custom property to the root of the document
         this.$el.style.setProperty('--vh', `${vh}px`)
+      },
+
+      // HTML Actions
+      clearHistory () {
+        this.$store.commit(M.clearHistory)
       }
     }
   }
@@ -81,7 +94,7 @@
 
     min-height: calc(var(--vh, 1vh) * 100);
 
-    background-color: map-get($colors-list, "black-near");
+    background-color: white;
   }
 
   .phistory__header {
@@ -94,7 +107,7 @@
     width: 100%;
     padding: $base-px * 4 $base-px * 2;
 
-    background-color: map-get($colors-list, "black-near");
+    background-color: white;
   }
 
   .phistory__header-container {

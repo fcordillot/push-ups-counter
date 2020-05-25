@@ -53,6 +53,7 @@ export const MUTATIONS = {
   images: 'M_images',
   globalData: 'M_globalData',
   //
+  clearHistory: 'M_clearHistory',
   addValueToHistoric: 'M_addValueToHistoric',
   addNewCount: 'M_addNewCount'
 }
