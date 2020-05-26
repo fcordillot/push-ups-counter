@@ -2,14 +2,14 @@
 import BaseMixin from '@/mixins/base'
 import ImagesMixin from '@/mixins/images'
 
+// Store
+import { GETTERS as G } from '@/store/helpers'
+
 // Data
 import pageData from '@/data/page'
 
 // Helpers
 import { decode } from '@/helpers/string'
-import { getLang } from '@/helpers/lang'
-
-const LANG = getLang()
 
 export default {
   pageName: 'home',
@@ -38,6 +38,8 @@ export default {
     },
 
     meta: function () {
+      const colorScheme = this.$store.getters[G.colorScheme]
+
       return [
         { p: 'description', c: decode(this.page.meta.description) },
         // OpenGraph
@@ -66,7 +68,7 @@ export default {
         { rel: 'mobile-web-app-capable', c: 'yes' },
         { rel: 'apple-mobile-web-app-capable', c: 'yes' },
         { rel: 'msapplication-starturl', c: '/' },
-        { rel: 'apple-mobile-web-app-status-bar-style', c: 'default' }
+        { rel: 'apple-mobile-web-app-status-bar-style', c: colorScheme === 'dark' ? 'black-translucent' : 'default' }
       ]
     },
 

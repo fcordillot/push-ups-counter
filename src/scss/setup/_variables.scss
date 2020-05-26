@@ -207,6 +207,19 @@ $fonts: (
     font-feature-settings: unquote("\"kern\" on, \"liga\" on, \"rlig\" on, \"calt\" on"),
     font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 700")
   ),
+  history-value-small: (
+    font-family: 'grtsk',
+    font-size: (
+      base: 12,
+      min: 12,
+      max: 12
+    ),
+    letter-spacing: 0.1em,
+    line-height: 1,
+    text-transform: none,
+    font-feature-settings: unquote("\"kern\" on, \"liga\" on, \"rlig\" on, \"calt\" on"),
+    font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 450")
+  ),
   history-date: (
     font-family: 'grtsk',
     font-size: (
