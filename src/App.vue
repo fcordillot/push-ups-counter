@@ -23,14 +23,15 @@
       return {
         env: process.env.VUE_APP_ENV,
         error: null,
-        loading: true
+        loading: false
       }
     },
 
     computed: {
       elClasses () {
         return [
-          this.loading ? 'is-loading' : ''
+          this.loading ? 'is-loading' : '',
+          `is-${this.$route.name}`
         ]
       },
 
@@ -143,6 +144,12 @@
 
   #main + footer {
     background-color: #FFF;
+  }
+
+  .app {
+    &.is-home {
+      background-color: map-get($colors-list, "black-near");
+    }
   }
 </style>
 

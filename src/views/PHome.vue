@@ -242,7 +242,7 @@
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
 
-    background-color: map-get($colors-list, "black-near");
+    // background-color: map-get($colors-list, "black-near");
     background-image: none;
 
     transition: background-color 0.55s $ease-out-quint, background-image 0.55s $ease-out-quint;
