@@ -17,9 +17,15 @@
 
     <puc-history-items></puc-history-items>
 
-    <div class="u-marg-t-6 u-pad-y-2 f-history-clear f-color-delete u-align-center"
+    <div v-if="historic.length > 0"
+         class="u-marg-t-6 u-pad-y-2 f-history-clear f-color-delete u-align-center"
          v-html="'Clear my history'"
          @click="clearHistory">
+    </div>
+
+    <div v-else
+         class="f-history-clear f-color-gray u-align-center"
+         v-html="'No history yet.'">
     </div>
   </div>
 </template>
@@ -29,7 +35,7 @@
   import PageMixin from '@/mixins/page'
 
   // Store
-  import { MUTATIONS as M } from '@/store/helpers'
+  import { GETTERS as G, MUTATIONS as M } from '@/store/helpers'
 
   // Helpers
   import { EventBus } from '@/helpers/event-bus'
@@ -48,6 +54,10 @@
     },
 
     computed: {
+      historic () {
+        return this.$store.getters[G.historic]
+      },
+
       elClasses () {
         return [
 
@@ -92,8 +102,7 @@
   .phistory {
     position: relative;
 
-    height: calc(var(--vh, 1vh) * 100);
-    overflow-y: scroll;
+    padding-top: $base-px * 10;
 
     background-color: white;
   }
@@ -106,9 +115,10 @@
 
     display: inline-block;
     width: 100%;
-    padding: $base-px * 4 $base-px * 2;
+    padding: $base-px * 3 $base-px * 2;
 
-    background-color: white;
+    background-color: rgba(white, 0.6);
+    backdrop-filter: blur(2px);
   }
 
   .phistory__header-container {

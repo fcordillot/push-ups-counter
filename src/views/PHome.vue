@@ -21,7 +21,7 @@
     </div>
 
     <div class="phome__mute f-color-white"
-         @click="muted = !muted">
+         @click="mute">
       <puc-svg-icon :icon="muted ? 'sound' : 'mute'"></puc-svg-icon>
     </div>
 
@@ -59,14 +59,17 @@
     data () {
       return {
         noSleepEnabled: false,
-        counting: false,
-        muted: false
+        counting: false
       }
     },
 
     computed: {
       count () {
         return this.$store.getters[G.count]
+      },
+
+      muted () {
+        return this.$store.getters[G.muted]
       },
 
       historic () {
@@ -170,6 +173,10 @@
 
         this._updateFontSize()
         this.reseting = false
+      },
+
+      mute () {
+        this.$store.commit(M.muted, !this.muted)
       }
     }
   }

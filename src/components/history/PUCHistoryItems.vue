@@ -50,8 +50,6 @@
 
 <style lang="scss" scoped>
   .puc-history-items {
-    margin-top: $base-px * 10;
-
     padding-right: $base-px * 2;
     padding-left: $base-px * 2;
   }

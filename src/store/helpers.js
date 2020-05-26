@@ -19,7 +19,8 @@ export const STATE = {
   globalData: 'globalData',
   //
   historic: 'historic',
-  counter: 'counter'
+  count: 'count',
+  muted: 'muted'
 }
 
 export const GETTERS = {
@@ -33,7 +34,8 @@ export const GETTERS = {
   globalData: 'globalData',
   //
   historic: 'historic',
-  counte: 'counte'
+  count: 'count',
+  muted: 'muted'
 }
 
 export const MUTATIONS = {
@@ -56,5 +58,6 @@ export const MUTATIONS = {
   clearHistory: 'M_clearHistory',
   addValueToHistoric: 'M_addValueToHistoric',
   removeValueToHistoric: 'M_removeValueToHistoric',
-  addNewCount: 'M_addNewCount'
+  addNewCount: 'M_addNewCount',
+  muted: 'M_muted'
 }

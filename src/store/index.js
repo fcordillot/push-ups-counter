@@ -42,7 +42,8 @@ export const state = {
   [STATE.globalData]: globalData(),
   //
   [STATE.historic]: JSON.parse(Cookie.get(CookieNames.HISTORIC)) || [],
-  [STATE.count]: 0
+  [STATE.count]: 0,
+  [STATE.muted]: false
 }
 
 export const getters = {
@@ -56,7 +57,8 @@ export const getters = {
   [GETTERS.globalData]: state => state.globalData,
   //
   [GETTERS.historic]: state => state[STATE.historic],
-  [GETTERS.count]: state => state[STATE.count]
+  [GETTERS.count]: state => state[STATE.count],
+  [GETTERS.muted]: state => state[STATE.muted]
 }
 
 export const mutations = {
@@ -129,6 +131,9 @@ export const mutations = {
   },
   [MUTATIONS.addNewCount] (state, value) {
     state[STATE.count] = value
+  },
+  [MUTATIONS.muted] (state, value) {
+    state[STATE.muted] = value
   }
 }
 
