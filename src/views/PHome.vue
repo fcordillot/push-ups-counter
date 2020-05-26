@@ -7,6 +7,10 @@
           ref="counter"
           v-html="count">
       </div>
+
+      <div class="u-marg-t-2">
+        <puc-stopwatch ref="stopwatch"></puc-stopwatch>
+      </div>
     </div>
 
     <div class="phome__reset-and-save f-reset f-color-white u-align-center"
@@ -51,10 +55,17 @@
   import { randomUUID } from '@/helpers/random'
   import { disableScroll } from '@/helpers/scroll'
 
+  // Components
+  import PUCStopwatch from '@/components/stopwatch/PUCStopwatch'
+
   export default {
     name: 'PHome',
     pageName: 'home',
     mixins: [PageMixin],
+
+    components: {
+      'puc-stopwatch': PUCStopwatch
+    },
 
     data () {
       return {
@@ -119,6 +130,9 @@
 
         if (this.counting) return
 
+        if (this.count === 0) {
+          this._startStopwatch()
+        }
         this.$store.commit(M.addNewCount, this.count + 1)
         this._playSound()
         this.counting = true
@@ -137,6 +151,23 @@
         if ($beep && !this.muted) {
           $beep.currentTime = 0
           $beep.play()
+        }
+      },
+
+      _startStopwatch () {
+        const $stopwatch = this.$refs['stopwatch']
+
+        if ($stopwatch) {
+          $stopwatch.start()
+        }
+      },
+
+      _stopStopwatch () {
+        const $stopwatch = this.$refs['stopwatch']
+
+        if ($stopwatch) {
+          $stopwatch.stop()
+          $stopwatch.reset()
         }
       },
 
@@ -163,11 +194,13 @@
           this.$store.commit(M.addValueToHistoric, {
             value: this.count,
             created_at: localISOString(),
-            uid: randomUUID()
+            uid: randomUUID(),
+            duration: this.$refs['stopwatch'] ? this.$refs['stopwatch'].getDuration() : 0
           })
         }
 
         this.$store.commit(M.addNewCount, 0)
+        this._stopStopwatch()
 
         await this.$nextTick()
 
@@ -214,6 +247,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     width: 100%;
     height: 100%;
   }

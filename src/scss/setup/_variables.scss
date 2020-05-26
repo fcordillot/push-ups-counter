@@ -145,6 +145,17 @@ $fonts: (
     font-feature-settings: unquote("\"kern\" on, \"liga\" on, \"rlig\" on, \"calt\" on"),
     font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 500")
   ),
+  stopwatch: (
+    font-size: (
+      base: 14,
+      min: 14,
+      max: 14
+    ),
+    letter-spacing: 0.1em,
+    line-height: 1,
+    font-feature-settings: unquote("\"kern\" on, \"liga\" on, \"rlig\" on, \"calt\" on"),
+    font-variation-settings: unquote("\"slnt\" 0, \"wdth\" 300, \"wght\" 400")
+  ),
   reset: (
     font-family: 'grtsk',
     font-size: (

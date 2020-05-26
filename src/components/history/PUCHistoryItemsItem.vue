@@ -1,7 +1,8 @@
 <template>
   <section class="puc-history-items-item u-marg-t-2 f-color-black-near"
            :class="elClasses"
-           :style="elStyle">
+           :style="elStyle"
+           @click="share">
     <div class="container">
       <div class="icon-and-number">
         <div class="icon-container">
@@ -9,8 +10,14 @@
                v-bind="icon.bind" />
         </div>
 
-        <div class="u-marg-l-1 f-history-value"
-             v-html="item.value">
+        <div class="u-marg-l-1">
+          <div class="f-history-value"
+               v-html="item.value">
+          </div>
+
+          <div class="f-history-date"
+               v-html="duration">
+          </div>
         </div>
       </div>
 
@@ -80,6 +87,43 @@
         })
       },
 
+      duration () {
+        let duration = this.item.duration
+        const ms = String((duration % 1000)).padStart(2, '0').substr(0, 2)
+
+        // Take out milliseconds
+        duration = duration / 1000
+        const seconds = Math.floor(duration % 60)
+        duration = duration / 60
+        const minutes = Math.floor(duration % 60)
+        duration = duration / 60
+        const hours = Math.floor(duration % 24)
+
+        if (hours > 0) {
+          return `${String(hours).padStart(2, '0')}h${String(minutes).padStart(2, '0')}'${String(seconds).padStart(2, '0')}"`
+        }
+
+        return `${String(minutes).padStart(2, '0')}'${String(seconds).padStart(2, '0')}"${String(ms)}`
+      },
+
+      durationToShare () {
+        let duration = this.item.duration
+
+        // Take out milliseconds
+        duration = duration / 1000
+        const seconds = Math.floor(duration % 60)
+        duration = duration / 60
+        const minutes = Math.floor(duration % 60)
+        duration = duration / 60
+        const hours = Math.floor(duration % 24)
+
+        if (hours > 0) {
+          return `${String(hours).padStart(2, '0')}h${String(minutes).padStart(2, '0')}min${String(seconds).padStart(2, '0')}s`
+        }
+
+        return `${String(minutes).padStart(2, '0')}min${String(seconds).padStart(2, '0')}s`
+      },
+
       historic () {
         return this.$store.getters[G.historic]
       },
@@ -96,8 +140,27 @@
       }
     },
 
+    created () {
+      console.log(this.item)
+    },
+
     methods: {
       // HTML Actions
+      async share () {
+        const data = {
+          title: process.env.VUE_APP_SITE_NAME,
+          text: `I just did ${this.item.value} push-ups in ${this.durationToShare} with ${process.env.VUE_APP_SITE_NAME} 💪 #PushUpsCounter`,
+          url: process.env.VUE_APP_URL
+        }
+        console.log(data)
+
+        try {
+          await navigator.share(data)
+        } catch (err) {
+          console.log(`Error= ${err}`)
+        }
+      },
+
       relativeDate () {
         const date = new Date(this.item.created_at)
 

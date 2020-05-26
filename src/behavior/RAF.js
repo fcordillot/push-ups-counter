@@ -1,3 +1,6 @@
+// Helpers
+import { randomUUID } from '@/helpers/random'
+
 /**
  * RAF
  * Optimize animations on scroll
@@ -40,7 +43,7 @@ class RAF {
    */
   add (callback) {
     if (typeof callback !== 'function') return false
-    const index = Date.now()
+    const index = `${Date.now()}_${randomUUID()}`
     this._callbacksMap[index] = callback
     this._callbacks = Object.values(this._callbacksMap)
 
