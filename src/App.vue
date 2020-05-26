@@ -92,7 +92,7 @@
 
         if ($body) {
           $body.classList.remove(`color-scheme--light`)
-          $body.classList.remove(`color-scheme-dark`)
+          $body.classList.remove(`color-scheme--dark`)
           $body.classList.add(`color-scheme--${this.$store.getters[G.colorScheme]}`)
 
           if (this.support.classes.length > 0) {
