@@ -92,7 +92,8 @@
   .phistory {
     position: relative;
 
-    min-height: calc(var(--vh, 1vh) * 100);
+    height: calc(var(--vh, 1vh) * 100);
+    overflow-y: scroll;
 
     background-color: white;
   }

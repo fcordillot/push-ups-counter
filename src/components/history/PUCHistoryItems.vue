@@ -5,7 +5,7 @@
     <puc-history-items-item v-for="(Item, ItemIndex) in historic"
                             :key="`puc-history-items_item-${ItemIndex}`"
                             :item="Item"
-                            :best-uid="best.uid">
+                            :bests-uid="bests">
     </puc-history-items-item>
   </section>
 </template>
@@ -32,8 +32,9 @@
         return historicReversed
       },
 
-      best () {
-        return [...this.historic].sort((a, b) => b.value - a.value)[0]
+      bests () {
+        const best = [...this.historic].sort((a, b) => b.value - a.value)
+        return [best[0] ? best[0].uid || null : null, best[1] ? best[1].uid || null : null, best[2] ? best[2].uid || null : null]
       },
 
       elClasses () {

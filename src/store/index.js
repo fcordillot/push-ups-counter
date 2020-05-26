@@ -110,6 +110,15 @@ export const mutations = {
     Cookie.set(CookieNames.HISTORIC, JSON.stringify([]))
     state[STATE.historic] = []
   },
+  [MUTATIONS.removeValueToHistoric] (state, uid) {
+    const historic = state[STATE.historic]
+    const index = historic.findIndex(h => h.uid === uid)
+
+    historic.splice(index, 1)
+
+    Cookie.set(CookieNames.HISTORIC, JSON.stringify(historic))
+    state[STATE.historic] = historic
+  },
   [MUTATIONS.addValueToHistoric] (state, value) {
     const historic = state[STATE.historic]
 

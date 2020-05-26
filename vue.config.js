@@ -137,7 +137,8 @@ const purgeCSSPlugin = new PurgeCSSPlugin({
     /^has-/,
     /^icon-/,
     /^was-/,
-    /^mapboxgl-/
+    /^mapboxgl-/,
+    /^f-count-/
   ]
 })
 

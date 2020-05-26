@@ -55,5 +55,6 @@ export const MUTATIONS = {
   //
   clearHistory: 'M_clearHistory',
   addValueToHistoric: 'M_addValueToHistoric',
+  removeValueToHistoric: 'M_removeValueToHistoric',
   addNewCount: 'M_addNewCount'
 }

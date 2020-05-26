@@ -2,19 +2,26 @@
   <section class="puc-history-items-item u-marg-t-2 f-color-black-near"
            :class="elClasses"
            :style="elStyle">
-    <div class="icon-and-number">
-      <div class="icon-container">
-        <img class="icon"
-            v-bind="icon.bind" />
+    <div class="container">
+      <div class="icon-and-number">
+        <div class="icon-container">
+          <img class="icon"
+               v-bind="icon.bind" />
+        </div>
+
+        <div class="u-marg-l-1 f-history-value"
+             v-html="item.value">
+        </div>
       </div>
 
-      <div class="u-marg-l-1 f-history-value"
-          v-html="item.value">
+      <div class="date f-history-date f-color-gray"
+          v-html="relativeDate()">
       </div>
     </div>
 
-    <div class="date f-history-date f-color-gray"
-         v-html="relativeDate()">
+    <div class="action u-marg-l-2"
+         @click="remove">
+      <puc-svg-icon icon="trash"></puc-svg-icon>
     </div>
   </section>
 </template>
@@ -23,6 +30,9 @@
   // Dependencies
   import TimeAgo from 'javascript-time-ago'
   import en from 'javascript-time-ago/locale/en'
+
+  // Store
+  import { GETTERS as G, MUTATIONS as M } from '@/store/helpers'
 
   // Helpers
   import { getImage } from '@/helpers/assets'
@@ -46,29 +56,38 @@
       },
 
       /**
-       * Best's UID
-       * @param {String} - *REQUIRED* bestUid
+       * Bests UID
+       * @param {Array} - *REQUIRED* bestsUid
        **/
-      bestUid: {
-        type: String,
+      bestsUid: {
+        type: Array,
         required: true
       }
     },
 
     computed: {
-      isBest () {
-        return this.bestUid === this.item.uid
+      isInBest () {
+        return this.bestsUid.includes(this.item.uid)
+      },
+
+      bestIndex () {
+        return this.isInBest ? this.bestsUid.findIndex(uid => uid === this.item.uid) : null
       },
 
       icon () {
         return getImage({
-          filename: this.isBest ? 'push-ups-counter_first-place-medal.png' : 'push-ups-counter_muscle.png'
+          filename: this.isInBest ? `push-ups-counter_${this.bestIndex}-place-medal.png` : 'push-ups-counter_muscle.png'
         })
+      },
+
+      historic () {
+        return this.$store.getters[G.historic]
       },
 
       elClasses () {
         return [
-          this.isBest ? 'is-best' : ''
+          this.isInBest ? `is-best-${this.bestIndex}` : '',
+          this.isInBest ? 'is-in-best' : ''
         ]
       },
 
@@ -83,6 +102,10 @@
         const date = new Date(this.item.created_at)
 
         return timeAgo.format(date)
+      },
+
+      remove () {
+        this.$store.commit(M.removeValueToHistoric, this.item.uid)
       }
     }
   }
@@ -93,17 +116,31 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    &:first-child {
+      margin-top: 0;
+    }
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     padding: $base-px * 2;
 
     background-color: map-get($colors-list, "white-near");
     border-radius: $border-radius * 12;
 
-    &.is-best {
-      background-color: rgba(#FFD455, 0.80);
+    .puc-history-items-item.is-best-0 & {
+      background-color: rgba(#FED300, 0.75);
     }
 
-    &:first-child {
-      margin-top: 0;
+    .puc-history-items-item.is-best-1 & {
+      background-color: rgba(#989898, 0.75);
+    }
+
+    .puc-history-items-item.is-best-2 & {
+      background-color: rgba(#813000, 0.75);
     }
   }
 
@@ -127,8 +164,28 @@
   }
 
   .date {
-    .puc-history-items-item.is-best & {
-      color: white;
+    .puc-history-items-item.is-best-0 & {
+      color: #D18F07;
     }
+
+    .puc-history-items-item.is-best-1 & {
+      color: #818185;
+    }
+
+    .puc-history-items-item.is-best-2 & {
+      color: #873400;
+    }
+  }
+
+  .action {
+    flex-shrink: 0;
+    width: $base-px * 4;
+    height: $base-px * 4;
+    padding: $base-px / 4 * 3;
+
+    background-color: rgba(map-get($colors-list, "delete"), 0.25);
+    border-radius: 50%;
+    border: 1px solid rgba(map-get($colors-list, "delete"), 0.5);
+    color: rgba(map-get($colors-list, "delete"), 0.75);
   }
 </style>

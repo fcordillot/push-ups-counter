@@ -16,6 +16,7 @@
   import { isAutoplaySupportedOldBrowser } from '@/helpers/videos'
   import { throttle } from '@/helpers/globals'
   import { EventBus } from '@/helpers/event-bus'
+  import { scrollTo } from '@/helpers/scroll'
 
   export default {
     data () {
@@ -46,6 +47,10 @@
       }
     },
 
+    watch: {
+      $route: '_onRouteChange'
+    },
+
     beforeCreate () {
       isAutoplaySupportedOldBrowser().then(() => {
         this.$store.commit(M.autoplayVideo, true)
@@ -73,6 +78,11 @@
     },
 
     methods: {
+      // Watch
+      _onRouteChange () {
+        scrollTo(0)
+      },
+
       // BODY
       _updateBodyClass () {
         const $body = document.body
@@ -128,6 +138,7 @@
   body {
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
+    touch-action: manipulation;
   }
 
   #main + footer {

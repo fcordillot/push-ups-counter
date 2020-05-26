@@ -36,6 +36,7 @@
   import { EventBus } from '@/helpers/event-bus'
   import { localISOString } from '@/helpers/date'
   import { randomUUID } from '@/helpers/random'
+  import { disableScroll } from '@/helpers/scroll'
 
   export default {
     name: 'PHome',
@@ -75,6 +76,7 @@
     async mounted () {
       await this.$nextTick()
 
+      disableScroll()
       this._onResize()
     },
 
