@@ -82,6 +82,8 @@
       // Watch
       _onRouteChange () {
         scrollTo(0)
+
+        this._updateBodyClass()
       },
 
       // BODY
@@ -140,16 +142,8 @@
     overflow: hidden;
     -webkit-overflow-scrolling: touch;
     touch-action: manipulation;
-  }
 
-  #main + footer {
-    background-color: #FFF;
-  }
-
-  .app {
-    &.is-home {
-      background-color: map-get($colors-list, "black-near");
-    }
+    background-color: white;
   }
 </style>
 

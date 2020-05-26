@@ -1,5 +1,5 @@
 <template>
-  <section class="puc-stopwatch f-color-white f-stopwatch"
+  <section class="puc-stopwatch f-color-black-near f-stopwatch"
            :class="elClasses"
            :style="elStyle"
            v-html="html">

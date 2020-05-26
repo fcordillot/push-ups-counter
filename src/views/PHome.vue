@@ -3,7 +3,7 @@
        :class="elClasses">
     <div class="phome__container"
          @click="_handleClick">
-      <div class="phome__counter f-count-1 f-color-white"
+      <div class="phome__counter f-count-1 f-color-black-near"
           ref="counter"
           v-html="count">
       </div>
@@ -13,18 +13,18 @@
       </div>
     </div>
 
-    <div class="phome__reset-and-save f-reset f-color-white u-align-center"
+    <div class="phome__reset-and-save f-reset f-color-gray-mid u-align-center"
          v-html="'Reset and save'"
          @click="_resetAndSave">
     </div>
 
-    <div class="phome__history f-color-white">
+    <div class="phome__history f-color-black-near">
       <router-link :to="{ name: 'history' }">
         <puc-svg-icon icon="history"></puc-svg-icon>
       </router-link>
     </div>
 
-    <div class="phome__mute f-color-white"
+    <div class="phome__mute f-color-black-near"
          @click="mute">
       <puc-svg-icon :icon="muted ? 'sound' : 'mute'"></puc-svg-icon>
     </div>
@@ -242,11 +242,10 @@
     height: 100vh;
     height: calc(var(--vh, 1vh) * 100);
 
-    // background-color: map-get($colors-list, "black-near");
     background-image: none;
 
-    transition: background-color 0.55s $ease-out-quint, background-image 0.55s $ease-out-quint;
-    will-change: background-color, background-image;
+    transition: background-image 0.55s $ease-out-quint;
+    will-change: background-image;
 
     &.is-counting {
       background-image: linear-gradient(167deg, rgb(243, 181, 34) 0%, rgb(249, 193, 48) 66%, rgb(221, 150, 10) 100%);
@@ -282,12 +281,16 @@
 
   .phome__reset-and-save {
     position: absolute;
-    right: 0;
-    bottom: $base-px * 2;
-    left: 0;
+    bottom: $base-px * 4;
+    left: 50%;
+    transform: translateX(-50%) translateZ(0);
     z-index: 2;
 
-    opacity: 0.5;
+    display: inline-block;
+    padding: $base-px $base-px * 2;
+
+    border-radius: $border-radius * 2;
+    background-color: map-get($colors-list, "white-near");
   }
 
   .phome__history {
@@ -299,8 +302,6 @@
     width: $base-px * 7;
     height: $base-px * 7;
     padding: $base-px * 2;
-
-    opacity: 0.5;
   }
 
   .phome__mute {
@@ -312,8 +313,6 @@
     width: $base-px * 7;
     height: $base-px * 7;
     padding: $base-px * 2;
-
-    opacity: 0.5;
   }
 
   .phome__beep {

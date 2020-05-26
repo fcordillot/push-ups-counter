@@ -62,6 +62,8 @@ export default {
 
     link: function () {
       return [
+        // Splashscreen
+        { rel: 'apple-touch-startup-image', href: this.allImages['seo/apple-splashscreen'].bind.src },
         // Favicon
         { rel: 'apple-touch-icon', href: this.allImages['seo/apple-icon-57x57'].bind.src, sizes: '57x57' },
         { rel: 'apple-touch-icon', href: this.allImages['seo/apple-icon-60x60'].bind.src, sizes: '60x60' },

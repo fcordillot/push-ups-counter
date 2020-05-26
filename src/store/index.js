@@ -43,7 +43,7 @@ export const state = {
   //
   [STATE.historic]: JSON.parse(Cookie.get(CookieNames.HISTORIC)) || [],
   [STATE.count]: 0,
-  [STATE.muted]: false,
+  [STATE.muted]: true,
   [STATE.stopwatchStartedAt]: null
 }
 
