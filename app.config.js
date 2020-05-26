@@ -6,7 +6,7 @@ module.exports = {
     name: 'Push Ups Counter',
     exportName: 'PUC_V', // filename used to generate package
     indexable: false, // Set true to remove meta robots
-    ssr: false,
+    ssr: true,
     // spa-pre rendering configuration
     pages: [
       {

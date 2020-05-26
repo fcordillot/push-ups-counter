@@ -14,11 +14,24 @@
          @click="_resetAndSave">
     </div>
 
-    <div class="phome__history f-reset f-color-white">
+    <div class="phome__history f-color-white">
       <router-link :to="{ name: 'history' }">
         <puc-svg-icon icon="history"></puc-svg-icon>
       </router-link>
     </div>
+
+    <div class="phome__mute f-color-white"
+         @click="muted = !muted">
+      <puc-svg-icon :icon="muted ? 'sound' : 'mute'"></puc-svg-icon>
+    </div>
+
+    <audio
+        class="phome__beep"
+        ref="beep"
+        src="~@/assets/sounds/beep.wav">
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
   </div>
 </template>
 
@@ -46,7 +59,8 @@
     data () {
       return {
         noSleepEnabled: false,
-        counting: false
+        counting: false,
+        muted: false
       }
     },
 
@@ -103,6 +117,7 @@
         if (this.counting) return
 
         this.$store.commit(M.addNewCount, this.count + 1)
+        this._playSound()
         this.counting = true
         setTimeout(() => {
           this.counting = false
@@ -111,6 +126,15 @@
         await this.$nextTick()
 
         this._updateFontSize()
+      },
+
+      _playSound () {
+        const $beep = this.$refs['beep']
+
+        if ($beep && !this.muted) {
+          $beep.currentTime = 0
+          $beep.play()
+        }
       },
 
       _updateFontSize () {
@@ -144,6 +168,7 @@
 
         await this.$nextTick()
 
+        this._updateFontSize()
         this.reseting = false
       }
     }
@@ -219,5 +244,22 @@
     padding: $base-px * 2;
 
     opacity: 0.5;
+  }
+
+  .phome__mute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+
+    width: $base-px * 7;
+    height: $base-px * 7;
+    padding: $base-px * 2;
+
+    opacity: 0.5;
+  }
+
+  .phome__beep {
+    display: none;
   }
 </style>

@@ -42,11 +42,11 @@ export default {
         { p: 'description', c: decode(this.page.meta.description) },
         // OpenGraph
         { p: 'og:title', c: `${this.page.meta.title} - ${process.env.VUE_APP_SITE_NAME}` },
-        { p: 'og:site_name', c: decode(this.page.meta.title) },
+        { p: 'og:site_name', c: `${this.page.meta.title} - ${process.env.VUE_APP_SITE_NAME}` },
         { p: 'og:description', c: decode(this.page.meta.description) },
         { p: 'og:image', c: `${process.env.VUE_APP_URL}${this.allImages['seo/push-ups-counter_1200x630'].bind.src}` },
-        { p: 'og:image:alt', c: decode(this.page.meta.title) },
-        { p: 'og:url', c: process.env.VUE_APP_URL },
+        { p: 'og:image:alt', c: `${this.page.meta.title} - ${process.env.VUE_APP_SITE_NAME}` },
+        { p: 'og:url', c: window.location.href },
         // Twitter
         { p: 'twitter:title', c: `${this.page.meta.title} - ${process.env.VUE_APP_SITE_NAME}` },
         { p: 'twitter:description', c: decode(this.page.meta.description) },
@@ -54,7 +54,9 @@ export default {
         // Favicon
         { p: 'msapplication-TileColor', c: '#ffffff' },
         { p: 'msapplication-TileImage', c: this.allImages['seo/ms-icon-144x144'].bind.src },
-        { p: 'theme-color', c: '#ffffff' }
+        { p: 'theme-color', c: '#ffffff' },
+        { p: 'application-name', c: process.env.VUE_APP_SITE_NAME },
+        { p: 'apple-mobile-web-app-title', c: process.env.VUE_APP_SITE_NAME }
       ]
     },
 
@@ -67,6 +69,7 @@ export default {
         { rel: 'apple-touch-icon', href: this.allImages['seo/apple-icon-76x76'].bind.src, sizes: '76x76' },
         { rel: 'apple-touch-icon', href: this.allImages['seo/apple-icon-114x114'].bind.src, sizes: '114x114' },
         { rel: 'apple-touch-icon', href: this.allImages['seo/apple-icon-120x120'].bind.src, sizes: '120x120' },
+        { rel: 'apple-touch-icon', href: this.allImages['seo/apple-icon-120x120'].bind.src, sizes: '128x128' },
         { rel: 'apple-touch-icon', href: this.allImages['seo/apple-icon-144x144'].bind.src, sizes: '144x114' },
         { rel: 'apple-touch-icon', href: this.allImages['seo/apple-icon-152x152'].bind.src, sizes: '152x152' },
         { rel: 'apple-touch-icon', href: this.allImages['seo/apple-icon-180x180'].bind.src, sizes: '180x180' },
