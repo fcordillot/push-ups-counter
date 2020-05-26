@@ -38,6 +38,7 @@ export default {
     },
 
     meta: function () {
+      console.log(this.allImages)
       return [
         { p: 'description', c: decode(this.page.meta.description) },
         // OpenGraph
