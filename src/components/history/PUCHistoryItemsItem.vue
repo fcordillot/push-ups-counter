@@ -1,9 +1,9 @@
 <template>
   <section class="puc-history-items-item u-marg-t-2 f-color-black-near"
            :class="elClasses"
-           :style="elStyle"
-           @click="share">
-    <div class="container">
+           :style="elStyle">
+    <div class="container"
+         @click="share">
       <div class="icon-and-number">
         <div class="icon-container">
           <img class="icon"
