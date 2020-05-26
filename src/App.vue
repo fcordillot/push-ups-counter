@@ -90,10 +90,14 @@
       _updateBodyClass () {
         const $body = document.body
 
-        if ($body && this.support.classes.length > 0) {
-          this.support.classes.map(c => $body.classList.add(c))
-
+        if ($body) {
+          $body.classList.remove(`color-scheme--light`)
+          $body.classList.remove(`color-scheme-dark`)
           $body.classList.add(`color-scheme--${this.$store.getters[G.colorScheme]}`)
+
+          if (this.support.classes.length > 0) {
+            this.support.classes.map(c => $body.classList.add(c))
+          }
         }
       },
 
