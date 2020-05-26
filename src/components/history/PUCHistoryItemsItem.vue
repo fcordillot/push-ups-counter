@@ -140,10 +140,6 @@
       }
     },
 
-    created () {
-      console.log(this.item)
-    },
-
     methods: {
       // HTML Actions
       async share () {
@@ -152,7 +148,6 @@
           text: `I just did ${this.item.value} push-ups in ${this.durationToShare} with ${process.env.VUE_APP_SITE_NAME} 💪 #PushUpsCounter`,
           url: process.env.VUE_APP_URL
         }
-        console.log(data)
 
         try {
           await navigator.share(data)
