@@ -190,15 +190,19 @@
     border-radius: $border-radius * 12;
 
     .puc-history-items-item.is-best-0 & {
-      background-color: rgba(#FED300, 0.75);
+      background-color: #FED300;
     }
 
     .puc-history-items-item.is-best-1 & {
-      background-color: rgba(#989898, 0.75);
+      background-color: rgba(#989898, 0.5);
+
+      .color-scheme--dark & {
+        background-color: #989898;
+      }
     }
 
     .puc-history-items-item.is-best-2 & {
-      background-color: rgba(#813000, 0.75);
+      background-color: #813000;
     }
   }
 
@@ -223,15 +227,15 @@
 
   .date {
     .puc-history-items-item.is-best-0 & {
-      color: #D18F07;
+      color: darken(#FED300, 25%);
     }
 
     .puc-history-items-item.is-best-1 & {
-      color: #818185;
+      color: darken(#989898, 35%);
     }
 
     .puc-history-items-item.is-best-2 & {
-      color: #873400;
+      color: darken(#813000, 15%);
     }
   }
 
@@ -245,5 +249,12 @@
     border-radius: 50%;
     border: 1px solid rgba(map-get($colors-list, "delete"), 0.5);
     color: rgba(map-get($colors-list, "delete"), 0.75);
+
+    .color-scheme--dark & {
+      background-color: rgba(desaturate(map-get($colors-list, "delete"), 25%), 0.25);
+      border-radius: 50%;
+      border: 1px solid rgba(desaturate(map-get($colors-list, "delete"), 15%), 0.5);
+      color: rgba(desaturate(map-get($colors-list, "delete"), 15%), 0.75);
+    }
   }
 </style>

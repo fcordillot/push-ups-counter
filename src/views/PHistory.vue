@@ -103,8 +103,6 @@
     position: relative;
 
     padding-top: $base-px * 10;
-
-    background-color: white;
   }
 
   .phistory__header {
@@ -119,6 +117,11 @@
 
     background-color: rgba(white, 0.6);
     backdrop-filter: blur(2px);
+
+    .color-scheme--dark & {
+      background-color: rgba(map-get($colors-list, "black-near"), 0.6);
+      color: white;
+    }
   }
 
   .phistory__header-container {

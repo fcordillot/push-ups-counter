@@ -108,5 +108,9 @@
 <style lang="scss" scoped>
   .puc-stopwatch {
     font-family: monospace;
+
+    .color-scheme--dark & {
+      color: white;
+    }
   }
 </style>

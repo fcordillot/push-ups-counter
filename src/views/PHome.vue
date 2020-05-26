@@ -277,6 +277,10 @@
     .phome.is-counting & {
       transform: scale(1.1) translateZ(0);
     }
+
+    .color-scheme--dark & {
+      color: white;
+    }
   }
 
   .phome__reset-and-save {
@@ -302,6 +306,10 @@
     width: $base-px * 7;
     height: $base-px * 7;
     padding: $base-px * 2;
+
+    .color-scheme--dark & {
+      color: white;
+    }
   }
 
   .phome__mute {
@@ -313,6 +321,10 @@
     width: $base-px * 7;
     height: $base-px * 7;
     padding: $base-px * 2;
+
+    .color-scheme--dark & {
+      color: white;
+    }
   }
 
   .phome__beep {

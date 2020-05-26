@@ -42,6 +42,8 @@ export default {
         { p: 'description', c: decode(this.page.meta.description) },
         // OpenGraph
         { p: 'og:title', c: process.env.VUE_APP_SITE_NAME },
+        { p: 'og:type', c: 'website' },
+        { p: 'fb:app_id', c: '' },
         { p: 'og:site_name', c: process.env.VUE_APP_SITE_NAME },
         { p: 'og:description', c: decode(this.page.meta.description) },
         { p: 'og:image', c: `${process.env.VUE_APP_URL}${this.allImages['seo/push-ups-counter_1200x630'].bind.src}` },
@@ -51,12 +53,20 @@ export default {
         { p: 'twitter:title', c: process.env.VUE_APP_SITE_NAME },
         { p: 'twitter:description', c: decode(this.page.meta.description) },
         { p: 'twitter:image', c: `${process.env.VUE_APP_URL}${this.allImages['seo/push-ups-counter_900x450'].bind.src}` },
+        { p: 'twitter:card', c: 'summary_large_image' },
+        { p: 'twitter:creator', c: '@fcordillot' },
         // Favicon
         { p: 'msapplication-TileColor', c: '#ffffff' },
         { p: 'msapplication-TileImage', c: this.allImages['seo/ms-icon-144x144'].bind.src },
         { p: 'theme-color', c: '#ffffff' },
+        { p: 'msapplication-navbutton-color', c: '#ffffff' },
         { p: 'application-name', c: process.env.VUE_APP_SITE_NAME },
-        { p: 'apple-mobile-web-app-title', c: process.env.VUE_APP_SITE_NAME }
+        { p: 'apple-mobile-web-app-title', c: process.env.VUE_APP_SITE_NAME },
+        // PWA
+        { rel: 'mobile-web-app-capable', c: 'yes' },
+        { rel: 'apple-mobile-web-app-capable', c: 'yes' },
+        { rel: 'msapplication-starturl', c: '/' },
+        { rel: 'apple-mobile-web-app-status-bar-style', c: 'default' }
       ]
     },
 

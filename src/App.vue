@@ -144,6 +144,10 @@
     touch-action: manipulation;
 
     background-color: white;
+
+    &.color-scheme--dark {
+      background-color: map-get($colors-list, "black-near");
+    }
   }
 </style>
 

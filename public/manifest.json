@@ -3,7 +3,7 @@
   "short_name": "Push Ups Counter",
   "lang": "en",
   "start_url": "/",
-  "display": "fullscreen",
+  "display": "standalone",
   "theme_color": "#ffffff",
   "icons": [
       {
