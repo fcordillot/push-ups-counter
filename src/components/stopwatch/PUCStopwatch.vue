@@ -10,17 +10,23 @@
   // Behaviors
   import RAF from '@/behavior/RAF'
 
+  // Store
+  import { GETTERS as G, MUTATIONS as M } from '@/store/helpers'
+
   export default {
     name: 'PUCStopwatch',
 
     data () {
       return {
-        startedAt: null,
         html: '00:00:00'
       }
     },
 
     computed: {
+      startedAt () {
+        return this.$store.getters[G.stopwatchStartedAt]
+      },
+
       elClasses () {
         return []
       },
@@ -41,7 +47,11 @@
     methods: {
       // Actions
       start () {
-        this.startedAt = new Date()
+        this.$store.commit(M.stopwatchStartedAt, new Date())
+        this.startRAF()
+      },
+
+      resume () {
         this.startRAF()
       },
 
@@ -50,7 +60,7 @@
       },
 
       reset () {
-        this.startedAt = null
+        this.$store.commit(M.stopwatchStartedAt, null)
         this.html = '00:00:00'
       },
 

@@ -75,6 +75,10 @@
     },
 
     computed: {
+      stopwatchStartedAt () {
+        return this.$store.getters[G.stopwatchStartedAt]
+      },
+
       count () {
         return this.$store.getters[G.count]
       },
@@ -103,6 +107,10 @@
 
     async mounted () {
       await this.$nextTick()
+
+      if (this.stopwatchStartedAt !== null) {
+        this._resumeStopwatch()
+      }
 
       disableScroll()
       this._onResize()
@@ -159,6 +167,14 @@
 
         if ($stopwatch) {
           $stopwatch.start()
+        }
+      },
+
+      _resumeStopwatch () {
+        const $stopwatch = this.$refs['stopwatch']
+
+        if ($stopwatch) {
+          $stopwatch.resume()
         }
       },
 

@@ -20,7 +20,8 @@ export const STATE = {
   //
   historic: 'historic',
   count: 'count',
-  muted: 'muted'
+  muted: 'muted',
+  stopwatchStartedAt: 'stopwatchStartedAt'
 }
 
 export const GETTERS = {
@@ -35,7 +36,8 @@ export const GETTERS = {
   //
   historic: 'historic',
   count: 'count',
-  muted: 'muted'
+  muted: 'muted',
+  stopwatchStartedAt: 'stopwatchStartedAt'
 }
 
 export const MUTATIONS = {
@@ -59,5 +61,6 @@ export const MUTATIONS = {
   addValueToHistoric: 'M_addValueToHistoric',
   removeValueToHistoric: 'M_removeValueToHistoric',
   addNewCount: 'M_addNewCount',
-  muted: 'M_muted'
+  muted: 'M_muted',
+  stopwatchStartedAt: 'M_stopwatchStartedAt'
 }

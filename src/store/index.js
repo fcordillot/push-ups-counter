@@ -43,7 +43,8 @@ export const state = {
   //
   [STATE.historic]: JSON.parse(Cookie.get(CookieNames.HISTORIC)) || [],
   [STATE.count]: 0,
-  [STATE.muted]: false
+  [STATE.muted]: false,
+  [STATE.stopwatchStartedAt]: null
 }
 
 export const getters = {
@@ -58,7 +59,8 @@ export const getters = {
   //
   [GETTERS.historic]: state => state[STATE.historic],
   [GETTERS.count]: state => state[STATE.count],
-  [GETTERS.muted]: state => state[STATE.muted]
+  [GETTERS.muted]: state => state[STATE.muted],
+  [GETTERS.stopwatchStartedAt]: state => state[STATE.stopwatchStartedAt]
 }
 
 export const mutations = {
@@ -134,6 +136,9 @@ export const mutations = {
   },
   [MUTATIONS.muted] (state, value) {
     state[STATE.muted] = value
+  },
+  [MUTATIONS.stopwatchStartedAt] (state, value) {
+    state[STATE.stopwatchStartedAt] = value
   }
 }
 
