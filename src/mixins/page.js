@@ -46,7 +46,7 @@ export default {
         { p: 'og:description', c: decode(this.page.meta.description) },
         { p: 'og:image', c: `${process.env.VUE_APP_URL}${this.allImages['seo/push-ups-counter_1200x630'].bind.src}` },
         { p: 'og:image:alt', c: process.env.VUE_APP_SITE_NAME },
-        { p: 'og:url', c: window.location.href },
+        { p: 'og:url', c: process.env.VUE_APP_URL },
         // Twitter
         { p: 'twitter:title', c: process.env.VUE_APP_SITE_NAME },
         { p: 'twitter:description', c: decode(this.page.meta.description) },
