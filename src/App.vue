@@ -161,6 +161,17 @@
       background-color: #f3b522;
     }
   }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-overflow-scrolling: auto;
+  }
+
+  *::-webkit-scrollbar {
+    width: 0px;
+  }
 </style>
 
 <style lang="scss" scoped>
