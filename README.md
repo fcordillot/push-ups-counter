@@ -11,14 +11,9 @@
 
 ## Installation
 
-1. rename all files and component's name:
-```shell
-$ ./install.sh
-```
-
-2. duplicate `.env.example` file for each environment
-3. rename it `.env.local` (`.dev`, `.production` and `.staging` too)
-4. update file for each environment
+1. duplicate `.env.example` file for each environment
+2. rename it `.env.local` (`.dev`, `.production` and `.staging` too)
+3. update file for each environment
 
 ## Setup
 
