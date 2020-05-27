@@ -149,8 +149,17 @@
 
     background-color: white;
 
+    background-image: none;
+
+    transition: background-image 0.55s $ease-out-quint;
+    will-change: background-image;
+
     &.color-scheme--dark {
       background-color: map-get($colors-list, "black-near");
+    }
+
+    &.is-counting {
+      background-image: linear-gradient(167deg, rgb(243, 181, 34) 0%, rgb(249, 193, 48) 66%, rgb(221, 150, 10) 100%);
     }
   }
 </style>

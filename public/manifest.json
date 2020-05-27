@@ -1,6 +1,6 @@
 {
   "name": "Push Ups Counter",
-  "short_name": "Push Ups Counter",
+  "short_name": "Push Ups",
   "lang": "en",
   "start_url": "/",
   "display": "standalone",

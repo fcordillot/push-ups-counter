@@ -144,13 +144,27 @@
         this.$store.commit(M.addNewCount, this.count + 1)
         this._playSound()
         this.counting = true
+        this._updateBodyClass()
         setTimeout(() => {
           this.counting = false
+          this._updateBodyClass()
         }, 250)
 
         await this.$nextTick()
 
         this._updateFontSize()
+      },
+
+      _updateBodyClass () {
+        const $body = document.body
+
+        if ($body) {
+          if (this.counting) {
+            $body.classList.add('is-counting')
+          } else {
+            $body.classList.remove('is-counting')
+          }
+        }
       },
 
       _playSound () {
@@ -246,10 +260,6 @@
 
     transition: background-image 0.55s $ease-out-quint;
     will-change: background-image;
-
-    &.is-counting {
-      background-image: linear-gradient(167deg, rgb(243, 181, 34) 0%, rgb(249, 193, 48) 66%, rgb(221, 150, 10) 100%);
-    }
   }
 
   .phome__container {
