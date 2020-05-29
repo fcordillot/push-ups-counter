@@ -47,7 +47,7 @@
   import PageMixin from '@/mixins/page'
 
   // Store
-  import { GETTERS as G, MUTATIONS as M } from '@/store/helpers'
+  import { GETTERS as G, MUTATIONS as M, STATE as S } from '@/store/helpers'
 
   // Helpers
   import { EventBus } from '@/helpers/event-bus'
@@ -75,6 +75,10 @@
     },
 
     computed: {
+      windowH () {
+        return this.$store.state[S.windowH]
+      },
+
       stopwatchStartedAt () {
         return this.$store.getters[G.stopwatchStartedAt]
       },
@@ -123,8 +127,10 @@
 
     methods: {
       // Events
-      _onResize () {
-        let vh = window.innerHeight * 0.01
+      async _onResize () {
+        await this.$nextTick()
+
+        const vh = document.documentElement.clientHeight * 0.01
         // Then we set the value in the --vh custom property to the root of the document
         this.$el.style.setProperty('--vh', `${vh}px`)
       },

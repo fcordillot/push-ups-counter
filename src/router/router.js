@@ -18,12 +18,18 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: PHome
+      component: PHome,
+      meta: {
+        hasScroll: false
+      }
     },
     {
       path: '/history',
       name: 'history',
-      component: PHistory
+      component: PHistory,
+      meta: {
+        hasscroll: true
+      }
     }
   ],
   /**

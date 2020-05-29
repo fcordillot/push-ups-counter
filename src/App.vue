@@ -1,6 +1,7 @@
 <template>
   <div class="app"
-       :class="elClasses">
+       :class="elClasses"
+       ontouchmove="_handleTouchmove">
     <router-view ref="page" />
   </div>
 </template>
@@ -108,11 +109,7 @@
 
       // RAF
       scrollRafCallback (event) {
-        this.toggleVisibilityTracker(event.scrollY)
-      },
 
-      toggleVisibilityTracker (scroll) {
-        this.menuIsShown = scroll >= this.showMenuOffset
       },
 
       startRaf () {
@@ -124,6 +121,11 @@
 
       stopRaf () {
         if (this.scrollRafID) this.scrollRafID = ScrollRAF.remove(this.scrollRafID)
+      },
+
+      // HTML Events
+      _handleTouchmove (event) {
+        if (!this.$route.meta.hasScroll) event.preventDefault()
       },
 
       // Events
