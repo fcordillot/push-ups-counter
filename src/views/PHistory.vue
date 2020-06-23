@@ -92,7 +92,10 @@
 
       // HTML Actions
       clearHistory () {
-        this.$store.commit(M.clearHistory)
+        const confirm = window.confirm('Do you really want to clean ALL your history?')
+        if (confirm) {
+          this.$store.commit(M.clearHistory)
+        }
       }
     }
   }

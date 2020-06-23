@@ -147,7 +147,10 @@
       },
 
       remove () {
-        this.$store.commit(M.removeValueToHistoric, this.item.uid)
+        const confirm = window.confirm('Do you really want to delete this item from your history?')
+        if (confirm) {
+          this.$store.commit(M.removeValueToHistoric, this.item.uid)
+        }
       }
     }
   }
