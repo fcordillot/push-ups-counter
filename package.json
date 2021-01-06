@@ -15,7 +15,7 @@
   "dependencies": {
     "@area17/a17-helpers": "^1.0.3",
     "animejs": "^3.1.0",
-    "axios": "^0.19.0",
+    "axios": "^0.21.1",
     "body-scroll-lock": "^2.6.4",
     "es6-tween": "^5.5.10",
     "flickity": "^2.2.1",
